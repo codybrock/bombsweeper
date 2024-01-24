@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d3rvijuy56o22"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it1j6"]
+bg_color = Color(0.592157, 0.631373, 0.968627, 1)
+border_color = Color(0.105882, 0.137255, 0.419608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p6mi"]
+bg_color = Color(0.360784, 0.419608, 0.968627, 1)
+border_color = Color(0.105882, 0.137255, 0.419608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbukl"]
+bg_color = Color(0.2425, 0.31525, 0.97, 1)
+border_color = Color(0.105882, 0.137255, 0.419608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siekb"]
+bg_color = Color(0.2, 0.26, 0.8, 1)
+border_color = Color(0.105882, 0.137255, 0.419608, 1)
+
+[resource]
+Button/colors/font_color = Color(0.741176, 0.741176, 0.741176, 1)
+Button/colors/font_disabled_color = Color(0.52549, 0.0352941, 0.00392157, 1)
+Button/colors/font_hover_color = Color(0.741176, 0.741176, 0.741176, 1)
+Button/colors/font_hover_pressed_color = Color(0.741176, 0.741176, 0.741176, 1)
+Button/colors/font_pressed_color = Color(0.741176, 0.741176, 0.741176, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_it1j6")
+Button/styles/hover = SubResource("StyleBoxFlat_0p6mi")
+Button/styles/normal = SubResource("StyleBoxFlat_mbukl")
+Button/styles/pressed = SubResource("StyleBoxFlat_siekb")
