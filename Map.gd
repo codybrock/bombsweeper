@@ -2,19 +2,15 @@ class_name Map extends GridContainer
 
 const CELL = preload("res://cell.tscn")
 
-var width : int = 10
-var height : int = 10
-var bombs : int = 30
-
 @onready var cells : Array
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	columns = width
-	for i in height:
+	columns = Global.width
+	for i in Global.height:
 		cells.append([])
-		for j in width:
+		for j in Global.width:
 			var cell = CELL.instantiate()
 			cell.x = j
 			cell.y = i
@@ -35,11 +31,11 @@ func generate(first_x, first_y):
 	var no_zone = get_cell_neighbors(cells[first_y][first_x])
 	no_zone.append(cells[first_y][first_x])
 	# Place mines
-	for i in bombs:
+	for i in Global.bombs:
 		prints("bomb #", i+1, ":")
 		while true:
-			var x = randi_range(0, width-1)
-			var y = randi_range(0, height-1)
+			var x = randi_range(0, Global.width-1)
+			var y = randi_range(0, Global.height-1)
 			prints("  randomly selected (", x, ",", y, ")")
 			prints("    no zone:", no_zone)
 			# if random cell is the first click or a neighbor, try again
@@ -104,6 +100,15 @@ func show_bombs():
 			var cell: Cell = cells[j][i]
 			if cell.bomb and cell.state == Cell.CELL_STATE.HIDDEN:
 				cell.icon = Cell.bomb_icon
+
+
+func check_win():
+	for i in cells.size():
+		for j in cells[i].size():
+			var cell: Cell = cells[j][i]
+			if not cell.bomb and cell.state == Cell.CELL_STATE.HIDDEN:
+				return false
+	return true
 
 
 func debug_print():

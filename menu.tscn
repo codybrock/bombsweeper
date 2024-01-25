@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2trrjtc7cgct"]
+[gd_scene load_steps=3 format=3 uid="uid://d2trrjtc7cgct"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_45de3"]
+
+[sub_resource type="Theme" id="Theme_d7hr2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -49,31 +51,53 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "Bombsweeper"
 
-[node name="GridSize" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Height" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridSize"]
+[node name="GridHeightLabel" type="Label" parent="MarginContainer/VBoxContainer/Height"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Grid Size: "
+size_flags_horizontal = 0
+theme = SubResource("Theme_d7hr2")
+text = "Height:"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/GridSize"]
+[node name="GridHeightLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Height"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 0.5
+text = "16"
 
-[node name="NumBombs" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Width" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NumBombs"]
+[node name="GridWidthLabel" type="Label" parent="MarginContainer/VBoxContainer/Width"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "# of Bombs: "
+size_flags_horizontal = 0
+theme = SubResource("Theme_d7hr2")
+text = "Width:"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/NumBombs"]
+[node name="GridWidthLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Width"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 0.5
+text = "16"
+
+[node name="Bombs" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NumBombsLabel" type="Label" parent="MarginContainer/VBoxContainer/Bombs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_d7hr2")
+text = "Bombs: "
+
+[node name="NumBombsLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Bombs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "40"
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -83,4 +107,5 @@ text = "PLAY"
 layout_mode = 2
 text = "QUIT"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

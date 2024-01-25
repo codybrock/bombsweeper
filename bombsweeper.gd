@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var map: Map = $Map
+@onready var map: Map = $CanvasLayer/Control/MarginContainer/Map
+@onready var win_lose_panel = $CanvasLayer/Control/MarginContainer3/WinLosePanel
+@onready var win_lose_label = $CanvasLayer/Control/MarginContainer3/WinLosePanel/MarginContainer/Label
 
 var active = false
 var first_click = true
@@ -31,14 +33,30 @@ func _on_cell_clicked(x, y):
 	var cell: Cell = map.cells[y][x]
 	if cell.bomb:
 		# reveal all bombs, end game
-		print("BOMB! YOU LOSE!")
 		active = false
 		cell.reveal()
 		map.show_bombs()
-	elif cell.neighbor_bombs == 0:
-		# reveal cell and all neighbors
-		map.reveal_neighbors(cell)
+		win_lose_label.text = "You Lose!"
+		win_lose_panel.visible = true
 	else:
-		cell.reveal()
+		if cell.neighbor_bombs == 0:
+			# reveal cell and all neighbors
+			map.reveal_neighbors(cell)
+		else:
+			cell.reveal()
+		if map.check_win():
+			active = false
+			map.show_bombs()
+			win_lose_label.text = "You Win!"
+			win_lose_panel.visible = true
+			
 
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		print("UI_CANCEL")
+		get_tree().change_scene_to_file("res://menu.tscn")
+
+
+func _on_menu_button_pressed():
+	get_tree().change_scene_to_file("res://menu.tscn")

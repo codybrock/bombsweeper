@@ -19,3 +19,20 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		print("UI_CANCEL")
 		get_tree().quit()
+
+
+func _on_play_button_pressed():
+	# validate
+	var h = int($MarginContainer/VBoxContainer/Height/GridHeightLineEdit.text)
+	var w = int($MarginContainer/VBoxContainer/Width/GridWidthLineEdit.text)
+	var b = int($MarginContainer/VBoxContainer/Bombs/NumBombsLineEdit.text)
+	
+	if h * w < b:
+		print("too many bombs, homie. stuff's dangerous")
+		return
+	
+	Global.height = h
+	Global.width = w
+	Global.bombs = b
+	
+	get_tree().change_scene_to_file("res://bombsweeper.tscn")
