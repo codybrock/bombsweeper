@@ -9,6 +9,10 @@ bg_color = Color(0.360784, 0.419608, 0.968627, 1)
 border_color = Color(0.105882, 0.137255, 0.419608, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbukl"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.2425, 0.31525, 0.97, 1)
 border_color = Color(0.105882, 0.137255, 0.419608, 1)
 
