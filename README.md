@@ -1,5 +1,8 @@
 # Bombsweeper
 
+Play on Itch.io!
+https://codybrock.itch.io/bombsweeper
+
 ## TODO:
 - [x] Win/Lose conditions
 - [ ] Timer
